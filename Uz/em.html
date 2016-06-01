@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:get_config_value('site_name')} - 后台管理首页</title>
+<link rel="stylesheet" href="CSS/bootstrap.css" />
+<link rel="stylesheet" href="CSS/css.css" />
+<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="JS/sdmenu.js"></script>
+<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+<script  type="text/javascript"  src="JS/Validform_v5.3.2_min.js"></script>
+
+</head>
+
+<body>
+<include file="./Uz/head.html" />
+
+     <div class="right"  id="mainFrame">
+     
+<div class="right_cont">
+<ul class="breadcrumb">当前位置： 邮箱配置
+</ul>
+   
+   <div class="title_right"><strong>参数设置</strong></div>
+   <div style="width:600px;">
+   	<form id="addform" action="{:U('__CONTROLLER__/save')}" method="post" enctype="multipart/form-data">
+      <input name="id" type="hidden" value="1" />
+   <table class="table table-bordered" >
+   <tr>
+   	<td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮件显示名：</td>
+   	<td><input type="text" name="email_title" value="{$em.email_title}" datatype="*" nullmsg="请填写内容！" errormsg="请填写内容" class="span4"  />
+   		<span class="Validform_checktip">如:百度公司</span></td>
+     </tr>
+       <tr>
+           <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮箱服务器地址：</td>
+           <td><input type="text" name="email_host" value="{$em.email_host}" datatype="*" nullmsg="请填写内容！" errormsg="请填写内容" class="span4"  />
+               <span class="Validform_checktip">如:smtp.163.com</span></td>
+       </tr>
+       <tr>
+           <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮箱地址：</td>
+           <td><input type="text" name="email_name" value="{$em.email_name}" datatype="*" nullmsg="请填写内容！" errormsg="请填写内容" class="span4"  />
+               <span class="Validform_checktip">如:baidu@163.com</span></td>
+       </tr>
+       <tr>
+           <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮箱账号：</td>
+           <td><input type="text" name="email_user" value="{$em.email_user}" datatype="*" nullmsg="请填写内容！" errormsg="请填写内容" class="span4"  />
+               <span class="Validform_checktip">如:baidu@163.com</span></td>
+       </tr>
+       <tr>
+           <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮箱密码：</td>
+           <td><input type="password" name="email_password" value="{$em.email_password}" datatype="*" nullmsg="请填写内容！" errormsg="请填写内容" class="span4"  />
+               <span class="Validform_checktip">不是登陆密码,是第三方密码</span></td>
+       </tr>
+   </table>
+   <table  class="margin-bottom-20 table  no-border" >
+        <tr>
+     	<td class="text-center"><input type="submit" value="确定" class="btn btn-info " style="width:80px;" /></td>
+     </tr>
+ </table>
+ </form>
+       <form  action="{:U('__CONTROLLER__/email')}" method="post" enctype="multipart/form-data">
+           <table class="table table-bordered" >
+           <tr>
+               <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">收件人地址：</td>
+               <td><input type="text" name="et" value="yf2019@qq.com" class="span4"  /> </td>
+           </tr>
+           <tr>
+               <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">标题：</td>
+               <td><input type="text" name="eb" value="小啊小标题" class="span4"  /> </td>
+           </tr>
+           <tr>
+               <td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">内容：</td>
+               <td><input type="text" name="en" value="我是一只小小鸟" class="span4"  /> </td>
+           </tr>
+           </table>
+           <table  class="margin-bottom-20 table  no-border" >
+               <tr>
+                   <td class="text-center"><input type="submit" value="测试邮件是否正常" class="btn btn-info " style="width:160px;" /></td>
+               </tr>
+           </table>
+       </form>
+
+
+   </div>
+     </div>
+     </div>
+    </div>
+<script>
+$(function(){
+  //提交表单合法性验证
+  $("#addform").Validform({
+    tiptype:function(msg,o,cssctl){
+      if(!o.obj.is("form")){
+          var objtip=o.obj.siblings(".Validform_checktip");
+          cssctl(objtip,o.type);
+          objtip.text(msg);
+      }
+    },
+
+  });
+})
+</script>
+<include file="./Uz/footer.html" />

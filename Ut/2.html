@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>微博数据搜索 - {:get_config_value('site_name')}</title>
+	<meta name="keywords" content="{:get_config_value('site_keywords')}" />
+	<meta name="description" content="{:get_config_value('site_descript')}" />
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="CSS/so.css" />
+	<link rel="stylesheet" type="text/css" href="CSS/tong.css" />
+	<script type="text/javascript" src="JS/jquery-1.8.3.min.js"></script>
+
+</head>
+
+<body>
+<include file="../Ut/head" />
+
+<div id="search_content" class="clearfix">
+	<div id="left">
+
+		<form action="" method="get">
+			<div class="t4 mb12">
+				<strong>平台媒体：</strong><span>
+                <select name="t_id" id="typeid">
+					<option value="-1" <?php if(I('get.t_id', -1) == -1) echo 'selected="selected"'; ?>>选择平台</option>
+					<option value="1" <?php if(I('get.t_id', -1) == 1) echo 'selected="selected"'; ?>>微博平台</option>
+					<option value="2" <?php if(I('get.t_id', -1) == 2) echo 'selected="selected"'; ?>>微信平台</option>
+					<option value="3" <?php if(I('get.t_id', -1) == 3) echo 'selected="selected"'; ?>>知乎平台</option>
+					<option value="4" <?php if(I('get.t_id', -1) == 4) echo 'selected="selected"'; ?>>其他平台</option>
+				</select></span>
+					<span>
+                <select name="type_id" id="typeid">
+					<option value="-1">选择类别</option>
+					<?php foreach ($brand_list as $k => $v):
+					if($v['id'] == I('get.type_id'))
+					$select = 'selected="selected"';
+					else
+					$select = '';
+					?>
+					<option {$select} value="{$v.id}">{$v.title}</option>
+					<?php endforeach; ?>
+				</select>
+					</span>
+			</div>
+			<div class="t4 mb12">
+				<strong>搜索名称：</strong><span><input name="title" value="<?php echo I('get.title'); ?>" type="text" id="productname"  /></span>
+			</div>
+			<div class="t4 mb12">
+				<strong>粉丝数量：</strong>
+						<span class="price_1">
+							<input type="text" id="lowprice"  class="sprice" name="start_price" value="<?php echo I('get.start_price'); ?>" />
+						</span><em class="zhi"></em>
+						<span class="price_1">
+							<input type="text" id="highprice" class="sprice" name="end_price" value="<?php echo I('get.end_price'); ?>" /></span>
+			</div>
+			<div class="t4">
+				<strong>价格区间：</strong>
+						<span class="price_1">
+							<input type="text" id="lowprice"  class="sprice" name="t_price" value="<?php echo I('get.t_price'); ?>" />
+						</span><em class="zhi"></em>
+						<span class="price_1">
+							<input type="text" id="highprice" class="sprice" name="e_price" value="<?php echo I('get.e_price'); ?>" /></span>
+			</div>
+
+	</div>
+	<div id="right">
+		<a href="{$ad4.dz}" target="_blank"><img src="{$ad4.tp}" height="98" width="520" border="0"></a>
+		<input type="submit"  class="search-button"  value="搜索" />
+		</form>
+		<div class="fr last">
+			<div style="margin-top: 34px;">
+				<div class="bdsharebuttonbox"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="show_zc">
+	<div class="zc_list" id="price">
+		<p>在线客服QQ：{$ad1.wz} <span style="float: right; margin-right: 10px;">共<font color="#0044CC">({$yq})</font>条结果</span></p>
+		<if condition='$data'>
+			<table width="960" border="0" cellspacing="0" cellpadding="0" id="cndns">
+				<tr>
+					<td width="50" height="40">平台</td>
+					<td width="220" height="40"><font color="#c90619">名称</font></td>
+					<td width="200" height="40">短链/账号</td>
+					<td width="150" height="40"><font color="#c90619">粉丝数</font></td>
+					<td width="150" height="40">媒体类别</td>
+					<td width="150" height="40"><font color="#c90619">头条价</font></td>
+					<td width="150" height="40"><font color="#c90619">普通价</font></td>
+					<td width="150" height="40">备注</td>
+				</tr>
+				<?php foreach ($data as $k => $v): ?>
+				<tr>
+					<td height="40"><img src="IMG/{$v.w7}.png" width="24px" height="24px"></td>
+					<td height="40"><font color="#FF2222">{$v.title}</font></td>
+					<td height="40">{$v.url}</td>
+					<td height="40"><font color="#FF2222">{$v.w3}/万</font></td>
+					<td height="40">{:get_title('brand',$v[w1])}</td>
+					<td height="40"><font color="#FF2222">{$v.w4}.00</font> </td>
+					<td height="40"><font color="#FF2222">{$v.w5}.00</font> </td>
+					<td height="40">{$v.w6}</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<div class="result">
+				{$page}
+			</div>
+			<else/>
+			<table width="960" border="0" cellspacing="0" cellpadding="0" id="cndns">
+				<tr>
+					<td height="40" align="center" colspan="7">没有搜索到数据！</td>
+				</tr>
+			</table>
+		</if>
+	</div>
+</div>
+
+<include file="../Ut/footer" />

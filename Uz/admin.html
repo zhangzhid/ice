@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{:get_config_value('site_name')} - 会员管理</title>
+		<link rel="stylesheet" href="CSS/bootstrap.css" />
+		<link rel="stylesheet" href="CSS/css.css" />
+		<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+		<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+		<script type="text/javascript" src="JS/sdmenu.js"></script>
+		<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+		<script type="text/javascript" src="JS/Validform_v5.3.2_min.js"></script>
+
+	</head>
+
+	<body>
+		<include file="./Uz/head.html" />
+		<div class="right" id="mainFrame">
+			<div class="right_cont">
+				<ul class="breadcrumb">当前位置： 后台管理
+				</ul>
+
+				<div class="title_right"><strong>后台管理账户列表</strong></div>
+				<div style="width:900px;">
+					<table class="table table-bordered">
+						<tr>
+							<td class="text-center"><a href="{:U('add')}"  class="btn btn-success" style="width:80px;" />增加管理员</td>
+						</tr>
+					</table>
+					<table class="table table-bordered">
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">AID</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">用户名</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">增加时间</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">操作</td>
+						</tr>
+							<foreach name="data" item="vo">
+								<tr>
+									<td align="center">{$vo.aid}</td>
+									<td align="center">{$vo.admin_name}</td>
+									<td align="center">{$vo.dtime|date="Y-m-d",###}</td>
+									<td align="center">
+										<a title="编辑" class=" btn  btn-info" href="{:U("edit?aid=$vo[aid]")}">编辑</a>
+										<a title="删除" class=" btn  btn-danger " href="{:U("del?aid=$vo[aid]")}">删除</a>
+									</td>
+								</tr>
+							</foreach>
+					</table>
+
+				</div>
+
+			</div>
+		</div>
+		</div>
+
+		<include file="./Uz/footer.html" />

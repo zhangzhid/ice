@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget">
+			<div class="widget-head">
+			  <div class="pull-left" height="80">
+			  管理admin			  </div>
+			  <div class="widget-icons pull-right">
+				<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+				<a href="#" class="wclose"><i class="icon-remove"></i></a>
+			  </div>  
+			  <div class="clearfix"></div>
+			</div>  
+			<div class="widget-content" >
+			<div class="padd">
+				<div class="form quick-post">
+							  <div class="form-horizontal">                        
+								  <div class="form-group">
+									<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>	
+<th><center>aid</center></th><th><center>admin_name</center></th><th><center>admin_password</center></th><th><center>dtime</center></th><td>操作</td>
+</tr>
+</thead>
+<volist name="adminList" id="vo">
+<tr>
+<td>{$vo.aid}</td><td>{$vo.admin_name}</td><td>{$vo.admin_password}</td><td>{$vo.dtime}</td><td><a href="{:U('Admin/edit/id/'.$vo[id])}">编辑</a> |
+<a href="{:U('Admin/delete/id/'.$vo[id])}" onclick='return confirm("确定删除吗？")'>删除</a>
+</td>
+<tr>
+</volist>
+</table>
+{$page}								  </div>              
+							  </div>
+				</div><!--end  paddad-->
+			</div>
+		</div>	
+		</div>	
+	</div>
+</div>
+</div>

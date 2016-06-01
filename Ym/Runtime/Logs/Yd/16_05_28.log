@@ -1,0 +1,219 @@
+[ 2016-05-28T21:53:21+08:00 ] ::1 /yd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001055s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001217s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001302s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0025s ]
+
+[ 2016-05-28T21:53:21+08:00 ] ::1 /Yd/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000496s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000686s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000166s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000299s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016452s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016583s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000758s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000855s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001330s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-05-28T21:53:31+08:00 ] ::1 /Yd/Login/check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000560s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000700s ]
+SQL: SHOW COLUMNS FROM `yf_admin` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `yf_admin` WHERE `admin_name` = 'zhangzhd' AND `admin_password` = '1f821f8e4dcdd5bb4b89a7b7b83b9f8b' LIMIT 1   [ RunTime:0.0022s ]
+
+[ 2016-05-28T21:57:30+08:00 ] ::1 /yd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001499s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0025s ]
+
+[ 2016-05-28T21:57:30+08:00 ] ::1 /Yd/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000412s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000633s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000141s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000260s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017722s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017867s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000663s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001136s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001206s ]
+
+[ 2016-05-28T21:57:38+08:00 ] ::1 /Yd/Login/check.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001180s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001291s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001438s ]
+SQL: SHOW COLUMNS FROM `yf_admin` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `yf_admin` WHERE `admin_name` = 'yf2018' AND `admin_password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2016-05-28T21:57:40+08:00 ] ::1 /Yd/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000626s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000850s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0013s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000141s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000284s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_url' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_title' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_keywords' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_descript' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_copyright' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: yb /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/6717a7b27228a4ba9123f31d0afd03e3.php 第 168 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029491s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029591s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000297s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000383s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000751s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000831s ]
+
+[ 2016-05-28T21:57:49+08:00 ] ::1 /Yd/user/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000979s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001133s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `yf_user` [ RunTime:0.0014s ]
+NOTIC: [8] Undefined index: username /Users/zhangzhd/dev/ice/Ym/Yd/Controller/UserController.class.php 第 15 行.
+NOTIC: [8] Undefined index: qq /Users/zhangzhd/dev/ice/Ym/Yd/Controller/UserController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: filter /Users/zhangzhd/dev/ice/Ym/Yd/Controller/UserController.class.php 第 29 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `yf_user` LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: filter /Users/zhangzhd/dev/ice/Ym/Yd/Controller/UserController.class.php 第 48 行.
+SQL: SELECT * FROM `yf_user` ORDER BY uid desc LIMIT 0,12   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000122s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000222s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: username /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/ed5507888dc87faffe64dfd638a70fac.php 第 103 行.
+NOTIC: [8] Undefined index: qq /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/ed5507888dc87faffe64dfd638a70fac.php 第 107 行.
+NOTIC: [8] Undefined variable: yb /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/ed5507888dc87faffe64dfd638a70fac.php 第 166 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019365s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019441s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000197s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000262s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000630s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000701s ]
+
+[ 2016-05-28T22:24:02+08:00 ] ::1 /Yd/user/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000333s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004281s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004741s ]
+ERR: SQLSTATE[HY000] [2002] No such file or directory
+
+[ 2016-05-28T22:24:09+08:00 ] ::1 /Yd/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000631s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0279s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0047s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001305s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001407s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_url' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_title' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_keywords' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_descript' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_copyright' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: yb /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/6717a7b27228a4ba9123f31d0afd03e3.php 第 168 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044796s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.044891s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000584s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000666s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001329s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001436s ]
+
+[ 2016-05-28T22:25:37+08:00 ] ::1 /Yd/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001291s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+SQL: SHOW COLUMNS FROM `yf_config` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `yf_config` ORDER BY sort ASC  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000291s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000465s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_url' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_name' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_title' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_keywords' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_descript' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_copyright' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `yf_config` WHERE `field` = 'site_logo' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: yb /Users/zhangzhd/dev/ice/Ym/Runtime/Cache/Yd/6717a7b27228a4ba9123f31d0afd03e3.php 第 168 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032132s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032249s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000683s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000794s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001535s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001670s ]
+

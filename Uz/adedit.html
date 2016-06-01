@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:get_config_value('site_name')} - 广告管理</title>
+<link rel="stylesheet" href="CSS/bootstrap.css" />
+<link rel="stylesheet" href="CSS/css.css" />
+<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="JS/sdmenu.js"></script>
+<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+</head>
+
+<body>
+<include file="./Uz/head.html" />
+
+     <div class="right"  id="mainFrame">
+     
+<div class="right_cont">
+<ul class="breadcrumb">当前位置： 后台管理
+</ul>
+   
+   <div class="title_right"><strong>广告修改</strong></div>
+   <div style="width:900px;">
+   	<form id="addform" action="{:U('__CONTROLLER__/save')}" method="post" enctype="multipart/form-data">
+     <input name="id" type="hidden" value="{$info.id}" />
+   <table class="table table-bordered" >
+   	<tr>
+   	<td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">广告位置：</td>
+   	<td width="38%"><input type="text" name="title" value="{$info.title}" datatype="s2-20" nullmsg="请填写位置！" errormsg="位置名称至少2个最多20个汉字！" class="span10"  />
+   		<span class="Validform_checktip"></span></td>
+     </tr>
+   	<tr>
+   	<td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">链接地址：</td>
+   	<td width="38%"><input type="text" name="dz" value="{$info.dz}" datatype="*" nullmsg="请填写地址！" class="span10"  />
+   		<span class="Validform_checktip"></span></td>
+     </tr>
+   	<tr>
+   	<td   align="right" nowrap="nowrap" bgcolor="#f1f1f1">文字：</td>
+   	<td width="38%"><input type="text" name="wz" value="{$info.wz}"  class="span10"  />
+   		<span class="Validform_checktip"></span></td>
+     </tr>
+       <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">图片：</td>
+       <td width="38%">
+          <input  name="tp" type="file" value="">        
+          <span class="Validform_checktip"></span></td>
+          </tr>
+   </table>
+   <table  class="margin-bottom-20 table  no-border" >
+        <tr>
+     	<td class="text-center"><input type="submit" value="确定" class="btn btn-info " style="width:80px;" /></td>
+     </tr>
+ </table>
+ </form>
+   </div> 
+     </div>     
+     </div>
+    </div>
+<include file="./Uz/footer.html" />

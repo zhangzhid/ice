@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:get_config_value('site_name')} - 单页管理</title>
+<link rel="stylesheet" href="CSS/bootstrap.css" />
+<link rel="stylesheet" href="CSS/css.css" />
+<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="JS/sdmenu.js"></script>
+<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+
+</head>
+
+<body>
+<include file="./Uz/head.html" />
+
+     <div class="right"  id="mainFrame">
+     
+<div class="right_cont">
+<ul class="breadcrumb">当前位置： 后台管理
+</ul>
+   
+   <div class="title_right"><strong>单页设置</strong></div>
+   <div style="width:900px;">
+       <table class="table table-bordered table-hover table-striped">
+         <tbody>
+           <tr align="center">
+             <td><strong>标题</strong></td>
+             <td><strong>操作</strong></td>
+           </tr>
+        <foreach name="list" item="v" >
+           <tr align="center">
+             <td>{$v.title}</td>
+             <td>
+             	<a title="编辑"  href="{:U("edit?id=$v[id]")}">编辑</a>
+             </td>
+           </tr>
+           </foreach>
+         </tbody>
+       </table>
+   </div>
+     </div>     
+     </div>
+    </div>
+
+<include file="./Uz/footer.html" />

@@ -1,0 +1,74 @@
+<div class="header">
+	 <div class="logo"><img  src="{:get_config_value('site_logo')}" /></div>
+     
+				<div class="header-right">
+              <i class="icon-off icon-white"></i> <a id="modal-973558" href="#modal-container-973558" role="button" data-toggle="modal">退出</a> <i class="icon-user icon-white"></i> <a href="/" target="_blank">网站首页</a>
+                <div id="modal-container-973558" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px; margin-left:-150px; top:30%">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">
+						注销系统
+					</h3>
+				</div>
+				<div class="modal-body">
+					<p>
+						您确定要注销退出系统吗？
+					</p>
+				</div>
+				<div class="modal-footer">
+					 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <a class="btn btn-primary" style="line-height:20px;" href="__CONTROLLER__/logout/" >确定退出</a>
+				</div>
+			</div>
+				</div>
+</div>
+<!-- 顶部 -->     
+            
+<div id="middle">
+     <div class="left">
+     
+     <script type="text/javascript">
+var myMenu;
+window.onload = function() {
+	myMenu = new SDMenu("my_menu");
+	myMenu.init();
+};
+</script>
+
+<div id="my_menu" class="sdmenu">
+	<div >
+		<span>常用管理</span>
+		<a href="__MODULE__/index">系统设置</a>
+		<a href="__MODULE__/em">邮箱配置</a>
+		<a href="__MODULE__/news/">单页管理</a>
+		<a href="__MODULE__/ad/">广告管理</a>
+		<a href="__MODULE__/top/">热门搜索</a>
+		<a href="__MODULE__/hd/">幻灯管理</a>
+	</div>
+	<div class="collapsed">
+		<span>营销数据管理</span>
+		<a href="__MODULE__/wb/">微博数据</a>
+		<a href="__MODULE__/wx/">微信数据</a>
+		<a href="__MODULE__/sz/">数字营销</a>
+		<a href="__MODULE__/wl/">网络公关</a>
+		<!--<a href="__MODULE__/qt/">其他数据</a>-->
+		<a href="__MODULE__/sx/">类别管理</a>
+	</div>
+		<div class="collapsed">
+		<span>用户会员管理</span>
+			<a href="__MODULE__/user/">会员管理</a>
+			<a href="__MODULE__/notes/">搜索记录</a>
+			<a href="__MODULE__/admin/">管理员</a>
+	</div>
+
+</div>
+
+     </div>
+     <div class="Switch"></div>
+     <script type="text/javascript">
+	$(document).ready(function(e) {
+    $(".Switch").click(function(){
+	$(".left").toggle();
+	 
+		});
+});
+</script>

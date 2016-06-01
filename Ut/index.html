@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{:get_config_value('site_title')} - {:get_config_value('site_name')}</title>
+	<meta name="keywords" content="{:get_config_value('site_keywords')}" />
+	<meta name="description" content="{:get_config_value('site_descript')}" />
+	<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="JS/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="JS/layer/layer.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$change_li = $(".wptab li");
+			$change_li.each(function(i) {
+				if(i>=1){
+					$(".wpcont").eq(i).hide();
+				}
+				$(this).mouseover(function() {
+					$(this).addClass("curent").siblings().removeClass("curent");
+					$(".wpcont").eq(i).show().siblings().hide();
+				})
+			});
+
+		});
+		$(function() {
+			var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
+			var len = $("#focus ul li").length; //获取焦点图个数
+			var index = 0;
+			var picTimer;
+
+			//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
+			var btn = "<div class='btnBg'></div><div class='btn'>";
+			for (var i = 0; i < len; i++) {
+				btn += "<span></span>";
+			}
+			btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
+			$("#focus").append(btn);
+			$("#focus .btnBg").css("opacity", 0.5);
+
+			//为小按钮添加鼠标滑入事件，以显示相应的内容
+			$("#focus .btn span").css("opacity", 0.4).mouseenter(function() {
+				index = $("#focus .btn span").index(this);
+				showPics(index);
+			}).eq(0).trigger("mouseenter");
+
+			//上一页、下一页按钮透明度处理
+			$("#focus .preNext").css("opacity", 0.2).hover(function() {
+						$(this).stop(true, false).animate({
+									"opacity": "0.5"
+								},
+								300);
+					},
+					function() {
+						$(this).stop(true, false).animate({
+									"opacity": "0.2"
+								},
+								300);
+					});
+
+			//上一页按钮
+			$("#focus .pre").click(function() {
+				index -= 1;
+				if (index == -1) {
+					index = len - 1;
+				}
+				showPics(index);
+			});
+
+			//下一页按钮
+			$("#focus .next").click(function() {
+				index += 1;
+				if (index == len) {
+					index = 0;
+				}
+				showPics(index);
+			});
+
+			//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+			$("#focus ul").css("width", sWidth * (len));
+
+			//鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
+			$("#focus").hover(function() {
+						clearInterval(picTimer);
+					},
+					function() {
+						picTimer = setInterval(function() {
+									showPics(index);
+									index++;
+									if (index == len) {
+										index = 0;
+									}
+								},
+								4000); //此4000代表自动播放的间隔，单位：毫秒
+					}).trigger("mouseleave");
+
+			//显示图片函数，根据接收的index值显示相应的内容
+			function showPics(index) { //普通切换
+				var nowLeft = -index * sWidth; //根据index值计算ul元素的left值
+				$("#focus ul").stop(true, false).animate({
+							"left": nowLeft
+						},
+						300); //通过animate()调整ul元素滚动到计算出的position
+				//$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
+				$("#focus .btn span").stop(true, false).animate({
+							"opacity": "0.4"
+						},
+						300).eq(index).stop(true, false).animate({
+							"opacity": "1"
+						},
+						300); //为当前的按钮切换到选中的效果
+			}
+		});
+	</script>
+</head>
+
+<body>
+<include file="../Ut/head" />
+	<div class="banner">
+		<div id="focus">
+			<ul>
+				<foreach name="hd" item="v" >
+					<li><a href="{$v.url}" target="_blank"><img src="{$v.pic}" alt="{$v.title}" /></a></li>
+				</foreach>
+			</ul>
+		</div>
+		<empty name="ckid.uid">
+		<div class="lgdiv">
+			<div class="lgtxdiv">
+				<div class="lgtxbg"></div>
+				<div class="lgtximg"><img src="IMG/wx.png" /></div>
+			</div>
+			<div class="lgform">
+				<form>
+					<div class="lginput">
+						<input type="text" name="username" id="username" class="inp" placeholder="请输入您的用户名" />
+					</div>
+					<div class="lginput">
+						<input type="password" name="password" id="password" class="inp" placeholder="请输入您密码" />
+					</div>
+					<div class="lginput">
+						<input type="button" class="insub" id="submit" value="登录"/>
+					</div>
+				</form>
+			</div>
+			<div class="lghref"><a href="/index/pwd/" target="_blank">忘记密码？</a><a href="/index/user/reg/" target="_blank">用户注册</a></div>
+		</div>
+			<else />
+		</empty>
+	</div>
+	<div class="seardiv">
+		<div class="seartxt"><div class="searleft"></div><div class="searbg">
+			<form action="/index/so/" method="get">
+				<input type="hidden" id="w7" name="w7"  value="-1" />
+				<input type="text" id="title" name="title" class="searinp" /><input type="submit" value="" class="searbtn" />
+			</form></div><div class="searright"></div></div>
+	</div>
+	<div class="wpbox">
+		<ul class="wptab clear-fix">
+			<li class="nline rad curent"><empty name="ckid.uid"><a href="javascript:;" id="t4">微信</a><else />
+				<a href="/index/so/?title=&t_id=2" title="点击查看更多" target="_blank">微信</a></empty></li>
+			<li><empty name="ckid.uid"><a href="javascript:;" id="t5">微博</a><else />
+				<a href="/index/so/?title=&t_id=1" title="点击查看更多" target="_blank">微博</a></empty></li>
+			<li><empty name="ckid.uid"><a href="javascript:;" id="t6">数字营销</a><else />
+				<a href="/index/sz/" title="点击查看更多" target="_blank">数字营销</a></empty></li>
+			<li class="rad2"><a href="#" target="_blank">网络公关</a></li>
+		</ul>
+		<div class="wpdata">
+			<div class="wpcont">
+				<dl class="title clear-fix">
+					<dd class="cw220">账号名称</dd>
+					<dd class="cw160">粉丝量</dd>
+					<dd class="cw160">头条报价</dd>
+					<dd class="cw160">非头条报价</dd>
+					<dd class="cw160">阅读数</dd>
+					<dd class="cw100">操作</dd>
+				</dl>
+				<if condition="$wx">
+					<foreach name="wx" item="vo">
+				<dl class="clear-fix">
+					<dt>
+					<div class="zzcode clear-fix">
+						<div class="zzctx">
+							<div class="zzctxbg"></div>
+							<div class="zzctximg"><img src="{$vo.z1}" /></div>
+						</div>
+						<div class="zzctxt">
+							<a>{$vo.title}</a><br />
+							<em>账号：{$vo.w2}</em><br />
+							<i>微信认证</i>
+						</div>
+					</div>
+					</dt>
+					<dd class="cw150">{$vo.w3}万</dd>
+					<dd class="cw170">{$vo.w4}</dd>
+					<dd class="cw165">{$vo.w5}</dd>
+					<dd class="cw135">{$vo.z2}+</dd>
+					<empty name="ckid.uid">
+						<dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
+						<else />
+						<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd>
+					</empty>
+				</dl>
+				</foreach>
+				<else/>
+				</if>
+				<empty name="ckid.uid">
+				<dl class="btrd">
+					<div class="pz">
+						<a class="wz" href="javascript:;" id="t1">>>点击查看更多数据</a>
+					</div>
+				</dl>
+					<else />
+					<dl class="btrd">
+						<div class="pz">
+							<a href="/index/so/?title=&t_id=2" class="wz" title="点击查看">>>点击查看更多数据</a>
+						</div>
+					</dl>
+				</empty>
+			</div>
+			<div class="wpcont">
+				<dl class="title clear-fix">
+					<dd class="cw220">账号名称</dd>
+					<dd class="cw160">粉丝量</dd>
+					<dd class="cw160">直发报价</dd>
+					<dd class="cw160">转发报价</dd>
+					<dd class="cw160">曝光率</dd>
+					<dd class="cw100">操作</dd>
+				</dl>
+				<if condition="$wb">
+					<foreach name="wb" item="vo">
+						<dl class="clear-fix">
+							<dt>
+							<div class="zzcode clear-fix">
+								<div class="zzctx">
+									<div class="zzctxbg"></div>
+									<div class="zzctximg"><img src="{$vo.z1}" /></div>
+								</div>
+								<div class="zzctxt">
+									<a>{$vo.title}</a><br />
+									<em>账号：{$vo.w2}</em><br />
+									<i>微博认证</i>
+								</div>
+							</div>
+							</dt>
+							<dd class="cw150">{$vo.w3}万</dd>
+							<dd class="cw170">{$vo.w4}</dd>
+							<dd class="cw165">{$vo.w5}</dd>
+							<dd class="cw135">{$vo.z2}+</dd>
+							<empty name="ckid.uid">
+								<dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
+								<else />
+								<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd>
+							</empty>
+						</dl>
+					</foreach>
+					<else/>
+				</if>
+				<empty name="ckid.uid">
+					<dl class="btrd">
+						<div class="pz">
+							<a class="wz" href="javascript:;" id="t2">>>点击查看更多数据</a>
+						</div>
+					</dl>
+					<else />
+					<dl class="btrd">
+						<div class="pz">
+							<a href="/index/so/?title=&t_id=1" class="wz" title="点击查看">>>点击查看更多数据</a>
+						</div>
+					</dl>
+				</empty>
+			</div>
+			<div class="wpcont">
+				<foreach name="sz" item="vo">
+				<dl class="clear-fix">
+					<div class="suzimg"><img src="{$vo.z1}" width="960" height="80" /></div>
+				</dl>
+				</foreach>
+				<empty name="ckid.uid">
+					<dl class="btrd">
+						<div class="pz">
+							<a class="wz" href="javascript:;" id="t3">>>点击查看更多数据</a>
+						</div>
+					</dl>
+					<else />
+					<dl class="btrd">
+						<div class="pz">
+							<a href="#" class="wz" title="点击查看">>>点击查看更多数据</a>
+						</div>
+					</dl>
+				</empty>
+			</div>
+			<div class="wpcont">
+				<empty name="ckid.uid">
+					<dl class="btrd">
+						<div class="pz">
+							<a class="wz" href="javascript:;" id="t3">>>点击查看更多数据</a>
+						</div>
+					</dl>
+					<else />
+					<dl class="btrd">
+						<div class="pz">
+							<a href="#" class="wz" title="点击查看">>>点击查看更多数据</a>
+						</div>
+					</dl>
+				</empty>
+
+			</div>
+		</div>
+	</div>
+<script>
+	$(document).ready(function(){
+		$('#submit').click(function(){
+			$.post("{:U('user/login')}",{
+				username:$('#username').val(),
+				password:$('#password').val()
+			},function(data){
+				if(data.status=='0'){
+					layer.alert(data.msg, {icon: 5});
+				}else{
+					layer.alert(data.msg, {icon: 6});
+					setTimeout(function(){
+						window.location.href="{:U('user/index')}";
+					},2000)
+				}
+				console.log(data);
+			})
+		})
+	})
+</script>
+<script type="text/javascript" src="JS/zc.js"></script>
+<include file="../Ut/footer" />

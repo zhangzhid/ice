@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:get_config_value('site_name')} - 增加微博</title>
+<link rel="stylesheet" href="CSS/bootstrap.css" />
+<link rel="stylesheet" href="CSS/css.css" />
+<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="JS/sdmenu.js"></script>
+<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+<script  type="text/javascript"  src="JS/Validform_v5.3.2_min.js"></script>
+
+</head>
+
+<body>
+<include file="./Uz/head.html" />
+
+     <div class="right"  id="mainFrame">
+     
+<div class="right_cont">
+<ul class="breadcrumb">当前位置： 后台管理
+</ul>
+   
+   <div class="title_right"><strong>编辑用户</strong></div>
+   <div style="width:250px;">
+   	<form id="addform" action="{:U('__CONTROLLER__/save')}" method="post" enctype="multipart/form-data">
+      <input name="uid" type="hidden" value="{$user_info.uid}" />
+   <table class="table table-bordered" >
+     <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">用户名：</td>
+       <td width="38%"><input type="text" name="username" value="{$user_info.username}" datatype="*4-50"  nullmsg="请填写用户名！" errormsg="不能少于4个字符大于50个汉字"/>
+       	<span class="Validform_checktip"></span>
+       </td> 
+     </tr>
+     <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">QQ号码：</td>
+       <td width="38%"><input type="text" name="qq" value="{$user_info.qq}" datatype="*4-11"  nullmsg="请填写qq号！" errormsg="不能少于4个字符大于11个字符"/>
+       	<span class="Validform_checktip"></span>
+       </td> 
+       </tr>
+     <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">邮箱地址：</td>
+       <td ><input type="text" name="email" value="{$user_info.email}" datatype="*6-50"  nullmsg="请填写邮箱地址！" errormsg="不能少于4个字符大于50个字符"/>
+       	<span class="Validform_checktip"></span>
+       </td> 
+       </tr>
+     <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">手机号码：</td>
+       <td ><input type="text" name="tel" value="{$user_info.tel}" datatype="*1-11" nullmsg="请填写手机号码！" errormsg="不能少于1个字符大于20个字符"/>
+       	<span class="Validform_checktip"></span>
+       </td> 
+       </tr>
+     <tr>
+       <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">从事行业：</td>
+       <td ><input type="text" name="xy" value="{$user_info.xy}" datatype="*4-10" nullmsg="请填写行业！" errormsg="不能少于1个字符大于20个字符"/>
+       	<span class="Validform_checktip"></span>
+       </td> 
+       </tr>
+       <tr>
+           <td align="right" nowrap="nowrap" bgcolor="#f1f1f1">会员级别：</td>
+           <td ><select name="ck"  class="span2">
+               <option value="0" <if condition="$user_info.ck eq 0">selected</if>>普通会员</option>
+               <option value="1" <if condition="$user_info.ck eq 1">selected</if>>铜牌会员</option>
+               <option value="2" <if condition="$user_info.ck eq 2">selected</if>>金牌会员</option>
+           </select>
+               <span class="Validform_checktip"></span>
+           </td>
+       </tr>
+   </table>
+   <table  class="margin-bottom-20 table  no-border" >
+        <tr>
+     	<td class="text-center"><input type="submit" value="确定" class="btn btn-info " style="width:80px;" /></td>
+     </tr>
+ </table>
+ </form>
+   </div> 
+     </div>     
+     </div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        //提交表单合法性验证 
+        $("#addform").Validform({ 
+            tiptype:function(msg,o,cssctl){ 
+              if(!o.obj.is("form")){ 
+                  var objtip=o.obj.siblings(".Validform_checktip");
+                  cssctl(objtip,o.type);
+                  objtip.text(msg); 
+              }
+            },
+            beforeSubmit:function(curform){
+                $(".tag-sure").trigger("click");
+            },
+			label:"label",
+		    ajaxPost:true,
+		    callback:function(data){
+		      if(data.status=="ok"){
+		          alert(data.info);
+		          window.location.href = "{:U('index')}";
+		      }else{
+		        alert(data.info);
+		      }
+		    }
+            
+        });
+
+        //双向选择
+        var leftSel = $("#selectL");
+        var rightSel = $("#selectR");
+        $("#toright").bind("click",function(){      
+            leftSel.find("option:selected").each(function(){
+                $(this).remove().appendTo(rightSel);
+            });
+        });
+        $("#toleft").bind("click",function(){       
+            rightSel.find("option:selected").each(function(){
+                $(this).remove().appendTo(leftSel);
+            });
+        });
+        leftSel.dblclick(function(){
+            $(this).find("option:selected").each(function(){
+                $(this).remove().appendTo(rightSel);
+            });
+        });
+        rightSel.dblclick(function(){
+            $(this).find("option:selected").each(function(){
+                $(this).remove().appendTo(leftSel);
+            });
+        });
+        $(".tag-sure").click(function(){
+            var selVal = [];
+            rightSel.find("option").each(function(){
+                selVal.push(this.value);
+            });
+            selVals = selVal.join(",");
+            if(selVals==""){
+                //alert("没有选择任何项！");
+            }else{
+                $("#type_ids").val(selVals);
+            }
+        });
+
+    });
+</script>
+<include file="./Uz/footer.html" />

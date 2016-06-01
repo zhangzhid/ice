@@ -1,0 +1,1 @@
+a:7:{i:0;s:2:"id";i:1;s:5:"title";i:2;s:2:"tp";i:3;s:2:"wz";i:4;s:2:"dz";s:3:"_pk";s:2:"id";s:5:"_type";a:5:{s:2:"id";s:6:"int(5)";s:5:"title";s:12:"varchar(255)";s:2:"tp";s:12:"varchar(255)";s:2:"wz";s:12:"varchar(255)";s:2:"dz";s:12:"varchar(255)";}}

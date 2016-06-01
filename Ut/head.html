@@ -1,0 +1,19 @@
+<div id="web">
+    <div class="topbar">
+        <empty name="ckid.uid">
+            <p>您好：<a href="/index/user/login/" target="_blank">登录</a><span>|</span><a href="/index/user/reg/">注册</a></p>
+            <else />
+            <p>您好：<em>{$ckid.username}</em><span>|</span><a href="/index/user/index/" >个人中心</a><span>|</span><a href="/index/user/index/">消息中心(<a class="bcol">0</a>)</a><span>|</span><a href="#" target="_blank">帮助</a><span>|</span><a href="/index/user/buy/" target="_blank">充值</a><span>|</span><a href="/index/user/logout/">退出</a></p>
+        </empty>
+    </div>
+    <div class="header">
+        <div class="headerbg">
+            <div class="logo"><a href="/" title="返回首页"><img src="IMG/logo.png" alt="{:get_config_value('site_name')}" /></a></div>
+            <div class="hottj">
+                <p>热门推荐：
+                    <foreach name="top" item="v" >
+                <span><a href="/index/so/?t_id=-1&type_id=-1&title={$v.title}&s_price=&d_price=&t_price=&e_price=" title="查看{$v.title}介绍">{$v.title}</a></span>
+                    </foreach>
+            </p></div>
+        </div>
+    </div>

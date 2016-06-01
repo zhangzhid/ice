@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{:get_config_value('site_name')} - 热门搜索管理</title>
+		<link rel="stylesheet" href="CSS/bootstrap.css" />
+		<link rel="stylesheet" href="CSS/css.css" />
+		<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+		<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+		<script type="text/javascript" src="JS/sdmenu.js"></script>
+		<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+		<script type="text/javascript" src="JS/Validform_v5.3.2_min.js"></script>
+
+	</head>
+
+	<body>
+		<include file="./Uz/head.html" />
+		<div class="right" id="mainFrame">
+			<div class="right_cont">
+				<ul class="breadcrumb">当前位置： 后台管理
+				</ul>
+
+				<div class="title_right"><strong>热门搜索列表</strong></div>
+				<div style="width:900px;">
+					<table class="table table-bordered">
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">ID</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">关键词</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">更新时间</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">操作</td>
+						</tr>
+						<if condition="$list">
+							<foreach name="list" item="vo">
+								<tr>
+									<td align="center"><a href="#">{$vo.id}</a></td>
+									<td align="center">{$vo.title}</td>
+									<td align="center">{$vo.time|date="Y-m-d",###}</td>
+									<td align="center">
+										<a title="编辑" class=" btn  btn-info" href="{:U("edit?id=$vo[id]")}">编辑</a>
+									</td>
+								</tr>
+							</foreach>
+							<else/>
+							<tr>
+								<td colspan="13" align="center">暂无数据</td>
+							</tr>
+						</if>
+					</table>
+				</div>
+
+			</div>
+		</div>
+		</div> 
+		<include file="./Uz/footer.html" />

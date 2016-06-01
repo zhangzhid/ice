@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+		<title>会员开通页面 - {:get_config_value('site_name')}</title>
+		<meta name="keywords" content="{:get_config_value('site_keywords')}" />
+		<meta name="description" content="{:get_config_value('site_keywords')}" />
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="CSS/user.css" />
+		<link rel="stylesheet" type="text/css" href="CSS/tong.css" />
+		<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+		<script type="text/javascript" src="JS/jquery-1.8.3.min.js"></script>
+	</head>
+
+	<body>
+		<include file="../Ut/head" />
+		<div id="wp">
+<div class="main">
+
+		<div class="section">
+            <h2>开通会员介绍:</h2>
+        <div>
+			{$buy.com|htmlspecialchars_decode}
+</div></div>
+		</div>
+	</div>
+
+		<include file="../Ut/footer" />

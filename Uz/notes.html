@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{:get_config_value('site_name')} - 搜索记录</title>
+		<link rel="stylesheet" href="CSS/bootstrap.css" />
+		<link rel="stylesheet" href="CSS/css.css" />
+		<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+		<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+		<script type="text/javascript" src="JS/sdmenu.js"></script>
+		<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+		<script type="text/javascript" src="JS/Validform_v5.3.2_min.js"></script>
+
+	</head>
+
+	<body>
+		<include file="./Uz/head.html" />
+		<div class="right" id="mainFrame">
+			<div class="right_cont">
+				<ul class="breadcrumb">当前位置： 后台管理
+				</ul>
+
+				<div class="title_right"><strong>会员搜索记录</strong></div>
+				<div style="width:900px;">
+					<form id="searchForm" name="searchform" class="well form-search" action="" method="post"  onSubmit="check();">
+					<table class="table table-bordered">
+						<tr>
+							<td width="10%" align="right" bgcolor="#f1f1f1">用户名：</td>
+							<td width="13%">
+								<input type="text" name="search[username]" value="{$search['username']}" placeholder="会员用户名" class="span1-1" />
+							</td>
+							<td width="10%" align="right" bgcolor="#f1f1f1">平台：</td>
+							<td width="13%">
+								<input type="text" name="search[r1]" value="{$search['r1']}" placeholder="如：微信" class="span1-1" />
+							</td>
+							<td width="10%" align="right" bgcolor="#f1f1f1">类别：</td>
+							<td width="15%">
+								<select name="search[r2]" class=" span1-1">
+									<option value ='0' selected>全部</option>
+									<volist name="brand_list" id="vo">
+										<option value="{$vo.id}" <if condition="$vo[id] eq $search[w1]">selected</if>>{$vo.title}</option>
+									</volist>
+								</select>
+							</td>
+							<td class="text-center">
+								<input type="submit" value="查询" class="btn btn-info " style="width:80px;" onclick="checkaction(1);" />
+								<a title="删除" class=" btn  btn-danger " href="{:U("del")}">删除30天前搜索记录</a>
+							</td>
+							</form> 
+						</tr>
+					</table>
+					<table class="table table-bordered">
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">RID</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">会员名</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">关键词</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">平台</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">类别</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">粉丝</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">价格</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">时间</td>
+						</tr>
+						<if condition="$goods_list">
+							<foreach name="goods_list" item="vo">
+								<tr>
+									<td align="center">{$vo.rid}</td>
+									<td align="center">{$vo.username}</td>
+									<td align="center"><empty name="vo.r3">未填写<else />{$vo.r3}</empty></td>
+									<td align="center"><if condition="$vo.r1 GT 0">{:get_title('pt',$vo[r1])}
+										<else/>
+										全部
+									</if></td>
+									<td align="center"><if condition="$vo.r2 GT 0">{:get_title('brand',$vo[r2])}
+										<else/>
+										全部
+									</if></td>
+
+									<td align="center">
+										<if condition="$vo.r4 GT 0">{$vo.r4} -
+											<else/>
+											-
+										</if>
+										<if condition="$vo.r5 GT 0">{$vo.r5}
+											<else/>
+											-
+										</if>
+									</td>
+									<td align="center">
+										<if condition="$vo.r6 GT 0">{$vo.r6} -
+										<else/>
+										-
+									</if>
+										<if condition="$vo.r7 GT 0">{$vo.r7}
+											<else/>
+											-
+										</if></td>
+									<td align="center">{$vo.rtime|date="Y-m-d H:i",###}</td>
+								</tr>
+							</foreach>
+							<else/>
+							<tr>
+								<td colspan="13" align="center">暂无数据</td>
+							</tr>
+						</if>
+					</table>
+							{$page}
+					</table>
+				</div>
+
+			</div>
+		</div>
+		</div>
+ <script>
+function checkaction(v){ 
+	if(v==0){ 
+	document.searchform.action="{:U('export')}"; 
+	}else{ 
+	document.searchform.action="{:U('index')}"; 
+	} 
+	searchform.submit(); 
+}
+
+</script>
+		<include file="./Uz/footer.html" />

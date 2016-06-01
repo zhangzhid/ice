@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+		<title>{$news.title} - {:get_config_value('site_name')}</title>
+		<meta name="keywords" content="{$news.des}" />
+		<meta name="description" content="{$news.des}" />
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="CSS/user.css" />
+		<link rel="stylesheet" type="text/css" href="CSS/tong.css" />
+		<link rel="stylesheet" type="text/css" href="CSS/style.css" />
+		<script type="text/javascript" src="JS/jquery-1.8.3.min.js"></script>
+	</head>
+
+	<body>
+		<include file="../Ut/head" />
+		<div id="wp">
+<div class="main">
+		<div class="section">
+			<h2 align="center" style="font-size: 16px;">{$news.title}</h2>
+            <div>
+                {$news.com|htmlspecialchars_decode}
+            </div>
+		</div>
+
+	</div>
+</form>
+
+		<include file="../Ut/footer" />

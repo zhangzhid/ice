@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+    <title>会员中心 - {:get_config_value('site_name')}</title>
+    <meta name="keywords" content="{:get_config_value('site_keywords')}"/>
+    <meta name="description" content="{:get_config_value('site_keywords')}"/>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="CSS/user.css"/>
+    <link rel="stylesheet" type="text/css" href="CSS/tong.css"/>
+    <link href="CSS/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="JS/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<include file="../Ut/head"/>
+<div id="wp">
+    <div class="main">
+        <div class="section">
+            <h2>基本信息:</h2>
+            <div>
+                <div class="item">
+                    <label for="">会员等级：</label>
+                    <span><if condition="$user.ck eq 0"><img src="IMG/01.gif" width="18px" height="18px"> 普通会员</if>
+                        <if condition="$user.ck eq 1"><img src="IMG/02.gif" width="18px" height="18px"> 银牌会员</if>
+                        <if condition="$user.ck eq 2"><img src="IMG/03.gif" width="18px" height="18px"> 金牌会员</if>
+                    </span> <a href="/index/user/buy/">【开通】</a>
+                </div>
+                <div class="item">
+                    <label for="">用户名：</label>
+                    <span>[{$user.username}]</span>
+                </div>
+                <div class="item">
+                    <label for="">QQ号码：</label>
+                    <span>[{$user.qq}]</span>
+                </div>
+                <div class="item">
+                    <label for="">手机号码：</label>
+                    <span>[{$user.tel}]</span>
+                </div>
+                <div class="item">
+                    <label for="">邮箱地址：</label>
+                    <span>[{$user.email}]</span>
+                </div>
+                <div class="item">
+                    <label for="">从事行业：</label>
+                    <span>[{$user.xy}]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section_open">修改密码<em>(请牢记登录密码)</em><span></span></h2>
+            <div style="display:block; position:relative; overflow:hidden;">
+                <form id="editform" action="{:U('mi')}" method="post">
+                    <input type="hidden" name="uid" value="{$user.uid}"/>
+                    <div class="item">
+                        <label for="">原始密码：</label>
+                        <input type="password" name="old_pwd" class="t1"/>
+                    </div>
+                    <div class="item">
+                        <label for="">新密码：</label>
+                        <input type="password" name="new_pwd" class="t1"/>
+                    </div>
+                    <div class="item">
+                        <label for="mobile">确认密码：</label>
+                        <input type="password" name="re_pwd" class="t1"/>
+                    </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="item">
+                <label for="">&nbsp;</label>
+                <input type="submit" class="abtn" value="确定修改"/>
+            </div>
+        </div>
+
+        </form>
+        <div class="section">
+            <h2>搜索记录:</h2>
+            <div>
+                <div class="cityListBox">
+                    <div class="show_zc">
+                        <div class="zc_list" id="price">
+                            <table width="925" border="0" cellspacing="0" cellpadding="0" id="cndns" class="tab1">
+                                <tr>
+                                    <td height="40">搜索时间</td>
+                                    <td height="40">搜索关键词</td>
+                                    <td height="40">平台</td>
+                                    <td height="40">类别</td>
+                                    <td height="40">头条价</td>
+                                    <td height="40">普通价</td>
+                                </tr>
+                                <if condition="$notes">
+                                    <foreach name="notes" item="vo">
+                                        <tr>
+                                            <td height="40">{:tranTime($vo[rtime])}</td>
+                                            <td height="40">
+                                                <empty name="vo.r3">未填写<else />{$vo.r3}</empty>
+                                            </td>
+                                            <td height="40">
+                                                <if condition="$vo.r1 GT 0">{:get_title('pt',$vo[r1])}平台
+                                                    <else/>
+                                                    全部平台
+                                                </if>
+                                            </td>
+                                            <td height="40">
+                                                <if condition="$vo.r2 GT 0">{:get_title('brand',$vo[r2])}
+                                                    <else/>
+                                                    全部类别
+                                                </if>
+                                            </td>
+
+                                            <td height="40">
+                                                <if condition="$vo.r4 GT 0">{$vo.r4} -
+                                                    <else/>
+                                                    -
+                                                </if>
+                                                <if condition="$vo.r5 GT 0">{$vo.r5}
+                                                    <else/>
+                                                    -
+                                                </if>
+                                            </td>
+                                            <td height="40">
+                                                <if condition="$vo.r6 GT 0">{$vo.r6} -
+                                                    <else/>
+                                                    -
+                                                </if>
+                                                <if condition="$vo.r7 GT 0">{$vo.r7}
+                                                    <else/>
+                                                    -
+                                                </if>
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                            </table>
+                                    <else/>
+                                    <table width="925" border="0" cellspacing="0" cellpadding="0" id="cndns">
+                                        <tr>
+                                            <td height="40" align="center" colspan="7">暂无搜索记录！</td>
+                                        </tr>
+                                    </table>
+                                </if>
+
+                            <div class="result">
+                                {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   </div>
+    <include file="../Ut/footer"/>
