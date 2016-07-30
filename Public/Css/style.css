@@ -28,19 +28,19 @@ input{outline:none}
 #focus .btn {position:absolute; width:1280px; height:10px; padding:5px 10px; right:0; bottom:0; text-align:center;}
 #focus .btn span {display:inline-block; _display:inline; _zoom:1; width:40px; height:3px; _font-size:0; margin-left:6px; cursor:pointer; background:#fff;}
 #focus .btn span.on {background:#fff;}
-#focus .preNext {width:45px; height:100px; position:absolute; top:90px; background:url(img/sprite.png) no-repeat 0 0; cursor:pointer;}
+#focus .preNext {width:45px; height:100px; position:absolute; top:90px; background:url(img\\sprite.png) no-repeat 0 0; cursor:pointer;}
 #focus .pre {left:0;}
 #focus .next {right:0; background-position:right top;}
 .lgdiv{ width:220px; height:260px; background:#ececec; position:absolute; right:66px; top:12px;border-radius:5px;}
 .lgtxdiv{width:70px; height:84px; margin:0 auto;position:relative; left:0; top:0px;}
-.lgtxdiv .lgtxbg{ background:url(../images/tx_bg.png) no-repeat; position:absolute; width:100%; height:100%; left:0; top:14px; z-index:99;}
+.lgtxdiv .lgtxbg{ background:url(..\\Images\\tx_bg.png) no-repeat; position:absolute; width:100%; height:100%; left:0; top:14px; z-index:99;}
 .lgtxdiv .lgtximg{ position:relative; width:100%; height:100%; position:absolute; left:0; top:14px; z-index:9;}
 .lgtximg img{ width:70px; height:70px;}
 
-.foot{ height:180px; background:#37474f; width:100%;}
-.foot p{ text-align:center; line-height:30px; padding-top:35px; color:#fff;}
+.foot{ height:150px; background:#37474f; width:100%;font-size:15px;}
+.foot p{ text-align:center; line-height:30px; padding-top:10px; color:#fff;}
 .foot span{ color:#fff; padding:0px 10px;}
-.foot a{ color:#fff; text-decoration:none; font-size:19px; font-weight:bold;}
+.foot a{ color:#fff; text-decoration:none; font-size:15px; font-weight:bold;}
 
 .lgdiv .lgform{ padding-top:10px; width:180px; margin:0 auto;}
 .lgform .lginput{ width:180px; height:26px; padding-bottom:13px;}
@@ -50,12 +50,16 @@ input{outline:none}
 .lghref a{ text-decoration:none; font-size:12px; color:#118ede; padding:0px 13px;}
 
 .seardiv{ width:840px; height:56px; padding-top:25px; margin:0 auto;}
-.seardiv .seartxt{ background:url(../images/sear_bg.png) repeat-x scroll; height:56px; width:100%; position:relative; left:0; top:0;}
-.seartxt .searleft{ background:url(../images/sear_left.png) no-repeat; width:31px; height:56px; position:absolute; left:0; top:0;}
-.seartxt .searright{ background:url(../images/sear_right.png) no-repeat; width:23px; height:56px; position:absolute; right:0; top:0;}
+.seardiv .seartxt{ background:url(..\\Images\\sear_bg.png) repeat-x scroll; height:56px; width:100%; position:relative; left:0; top:0;}
+.seartxt .searleft{ background:url(..\\Images\\sear_left.png) no-repeat; width:31px; height:56px; position:absolute; left:0; top:0;}
+.seartxt .searright{ background:url(..\\Images\\sear_right.png) no-repeat; width:23px; height:56px; position:absolute; right:0; top:0;}
 .seartxt .searbg{ position:absolute; left:35px; top:2px; width:780px; height:52px;}
 .searbg input.searinp{ font-size:18px; color:#46bdab; height:20px; padding:15px 10px 15px 10px; width:725px;}
-.searbg input.searbtn{ border-left:1px solid #e2e2e2; background:url(../images/sear_btn.png) no-repeat center right; height:27px; width:31px; position:relative; top:12px; left::2px; cursor:pointer;}
+.searbg input.searbtn{ border-left:1px solid #e2e2e2; background:url(..\\Images\\sear_btn.png) no-repeat center right; height:27px; width:31px; position:relative; top:12px; left::2px; cursor:pointer;}
+
+.searchbox{ padding-top:20px; width:1070px; margin:0 auto;}
+.searchbox .wptab{ height:64px;}
+.searchbox .wpcont{ padding-top:24px;}
 
 .wpbox{ padding-top:20px; width:960px; margin:0 auto;}
 .wpbox .wptab{ height:64px;}
@@ -133,17 +137,17 @@ input{outline:none}
     width: 240px;
     margin: 0 auto;
 }
-.wpcont .zmore{ font-size:16px; color:#3bbee8; padding-left:10px; background:url(../images/ico01.png) no-repeat center right; width:100px;}
+.wpcont .zmore{ font-size:16px; color:#3bbee8; padding-left:10px; background:url(..\\Images\\ico01.png) no-repeat center right; width:100px;}
 .wpcont .zzctx3{ width:645px; font-size:14px; line-height:18px; padding-top:20px; color:#b7b6b6;}
 .zzctx3 em{ font-style:normal; color:#3bbee8;}
 .zzctxt2 a{ font-size:16px; color:#3bbee8; height:50px; line-height:20px;}
-.zzctx .zzctxbg{ background:url(../images/tx2_bg.png) no-repeat; width:60px; height:60px; position:absolute; left:0; left:0; z-index:99;}
-.bg108 .zzctxbg{ background:url(../images/tx3_bg.png) no-repeat; width:60px; height:60px; position:absolute; left:0; left:0; z-index:99;}
+.zzctx .zzctxbg{ background:url(..\\Images\\tx2_bg.png) no-repeat; width:60px; height:60px; position:absolute; left:0; left:0; z-index:99;}
+.bg108 .zzctxbg{ background:url(..\\Images\\tx3_bg.png) no-repeat; width:60px; height:60px; position:absolute; left:0; left:0; z-index:99;}
 .zzctx .zzctximg{ position:absolute; left:0; top:0; z-index:1;}
 .zzctximg img{ width:60px; height:60px;}
 .zzctxt a{ font-size:16px; color:#3bbee8; padding:4px 0px 3px 6px;}
 .zzctxt em{ padding:0px 0px 4px 6px; font-size:12px; color:#d3d3d3; font-style:normal;}
-.zzctxt i{ font-style:normal; background:url(../images/wx_bg.png) no-repeat 2px 0px; font-size:12px; width:70px; height:19px; display:block; text-align:center; color:#fff; line-height:19px;}
+.zzctxt i{ font-style:normal; background:url(..\\Images\\wx_bg.png) no-repeat 2px 0px; font-size:12px; width:70px; height:19px; display:block; text-align:center; color:#fff; line-height:19px;}
 .wpcont dd a{ color:#3bbee8; text-decoration:none;}
 .page{ height:28px; padding:26px 0px; text-align:center; width:240px; margin:0 auto;}
 .page a{ width:28px; height:28px; display:block; line-height:28px; background:#b5b5b6; font-size:16px; color:#fff; margin:0px 1px; float:left;}
@@ -162,7 +166,7 @@ input{outline:none}
 .wptype .wpthd{ border-bottom:1px solid #e7eaec; height:45px; background:#fff;border-radius:5px 5px 0px 0px; position:relative; top:0; left:0;}
 .wpthd h3{ padding-left:15px; line-height:45px; font-weight:normal; color:#3bbee8; font-size:20px;}
 .wpthd .wpthdmore{ position:absolute; right:0; top:0; padding-right:40px; height:45px;}
-.wpthdmore a{ background:url(../images/ico01.png) no-repeat center right; line-height:45px; text-align:left; text-decoration:none; font-size:14px; color:#3bbee8; padding-right:30px; line-height:45px; display:block;}
+.wpthdmore a{ background:url(..\\Images\\ico01.png) no-repeat center right; line-height:45px; text-align:left; text-decoration:none; font-size:14px; color:#3bbee8; padding-right:30px; line-height:45px; display:block;}
 .wpthbd{ position:relative; top:0; left:0; padding-bottom:30px;}
 .wpthbd dl{ height:49px; border-bottom:1px solid #e7eaec; color:#b5b5b6; font-size:14xp; background:#fff;}
 .wpthbd dd{ float:left; padding-left:25px; width:72px; line-height:49px;}

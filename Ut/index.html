@@ -186,18 +186,20 @@
 						<div class="zzctxt">
 							<a>{$vo.title}</a><br />
 							<em>账号：{$vo.w2}</em><br />
-							<i>微信认证</i>
+							<if condition="($vo.type_v eq 1)">
+								<i>微信认证</i>
+							</if>
 						</div>
 					</div>
 					</dt>
 					<dd class="cw150">{$vo.w3}万</dd>
-					<dd class="cw170">{$vo.w4}</dd>
-					<dd class="cw165">{$vo.w5}</dd>
+					<dd class="cw170">￥{$vo.w4}</dd>
+					<dd class="cw165">￥{$vo.w5}</dd>
 					<dd class="cw135">{$vo.z2}+</dd>
 					<empty name="ckid.uid">
 						<dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
 						<else />
-						<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd>
+						<dd><a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">预约</a>&nbsp;|&nbsp;<a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">查看</a></dd>
 					</empty>
 				</dl>
 				</foreach>
@@ -223,7 +225,7 @@
 					<dd class="cw160">粉丝量</dd>
 					<dd class="cw160">直发报价</dd>
 					<dd class="cw160">转发报价</dd>
-					<dd class="cw160">曝光率</dd>
+					<dd class="cw160">周约次数</dd>
 					<dd class="cw100">操作</dd>
 				</dl>
 				<if condition="$wb">
@@ -238,18 +240,20 @@
 								<div class="zzctxt">
 									<a>{$vo.title}</a><br />
 									<em>账号：{$vo.w2}</em><br />
-									<i>微博认证</i>
+									<if condition="($vo.type_v eq 1)">
+										<i>微博认证</i>
+									</if>
 								</div>
 							</div>
 							</dt>
 							<dd class="cw150">{$vo.w3}万</dd>
 							<dd class="cw170">{$vo.w4}</dd>
 							<dd class="cw165">{$vo.w5}</dd>
-							<dd class="cw135">{$vo.z2}+</dd>
+							<dd class="cw135">{$vo.z2}</dd>
 							<empty name="ckid.uid">
 								<dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
 								<else />
-								<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd>
+								<dd><a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">预约</a>&nbsp;|&nbsp;<a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">查看</a></dd>
 							</empty>
 						</dl>
 					</foreach>
@@ -290,6 +294,11 @@
 				</empty>
 			</div>
 			<div class="wpcont">
+				<foreach name="wl" item="vo">
+					<dl class="clear-fix">
+						<div class="suzimg"><img src="{$vo.z1}" width="960" height="80" /></div>
+					</dl>
+				</foreach>
 				<empty name="ckid.uid">
 					<dl class="btrd">
 						<div class="pz">

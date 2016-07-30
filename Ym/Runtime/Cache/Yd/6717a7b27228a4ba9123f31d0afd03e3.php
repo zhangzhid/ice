@@ -32,7 +32,7 @@
 					</p>
 				</div>
 				<div class="modal-footer">
-					 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <a class="btn btn-primary" style="line-height:20px;" href="/Yd/Index/logout/" >确定退出</a>
+					 <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <a class="btn btn-primary" style="line-height:20px;" href="/yd/index/logout/" >确定退出</a>
 				</div>
 			</div>
 				</div>
@@ -53,26 +53,27 @@ window.onload = function() {
 <div id="my_menu" class="sdmenu">
 	<div >
 		<span>常用管理</span>
-		<a href="/Yd/index">系统设置</a>
-		<a href="/Yd/em">邮箱配置</a>
-		<a href="/Yd/news/">单页管理</a>
-		<a href="/Yd/ad/">广告管理</a>
-		<a href="/Yd/top/">热门搜索</a>
-		<a href="/Yd/hd/">幻灯管理</a>
+		<a href="/yd/index">系统设置</a>
+		<a href="/yd/em">邮箱配置</a>
+		<a href="/yd/news/">单页管理</a>
+		<a href="/yd/ad/">广告管理</a>
+		<a href="/yd/top/">热门搜索</a>
+		<a href="/yd/hd/">幻灯管理</a>
 	</div>
 	<div class="collapsed">
 		<span>营销数据管理</span>
-		<a href="/Yd/wb/">微博数据</a>
-		<a href="/Yd/wx/">微信数据</a>
-		<a href="/Yd/sz/">数字营销</a>
-		<!--<a href="/Yd/qt/">其他数据</a>-->
-		<a href="/Yd/sx/">类别管理</a>
+		<a href="/yd/wb/">微博数据</a>
+		<a href="/yd/wx/">微信数据</a>
+		<a href="/yd/sz/">数字营销</a>
+		<a href="/yd/wl/">网络公关</a>
+		<!--<a href="/yd/qt/">其他数据</a>-->
+		<a href="/yd/sx/">类别管理</a>
 	</div>
 		<div class="collapsed">
 		<span>用户会员管理</span>
-			<a href="/Yd/user/">会员管理</a>
-			<a href="/Yd/notes/">搜索记录</a>
-			<a href="/Yd/admin/">管理员</a>
+			<a href="/yd/user/">会员管理</a>
+			<a href="/yd/notes/">搜索记录</a>
+			<a href="/yd/admin/">管理员</a>
 	</div>
 
 </div>
@@ -86,7 +87,7 @@ window.onload = function() {
 	 
 		});
 });
-</script>
+</script>N
 
      <div class="right"  id="mainFrame">
      
@@ -96,7 +97,7 @@ window.onload = function() {
    
    <div class="title_right"><strong>基本设置</strong></div>
    <div style="width:900px;">
-   	<form id="addform" action="<?php echo U('/Yd/Index/save');?>" method="post" enctype="multipart/form-data">
+   	<form id="addform" action="<?php echo U('/yd/index/save');?>" method="post" enctype="multipart/form-data">
       <input name="id" type="hidden" value="" />
    <table class="table table-bordered" >
        <tr>

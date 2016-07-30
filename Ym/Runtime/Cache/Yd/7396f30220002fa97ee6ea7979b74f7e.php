@@ -56,7 +56,7 @@ $(function(){
         $("#admin_name").focus();
         return false;
     }else{
-        var url = "<?php echo U('/Yd/Login/check');?>";
+        var url = "<?php echo U('/yd/login/check');?>";
         $.post(url, { admin_name:admin_name, admin_password:admin_password}, function(msg){
         if(msg.info == 'ok') {
           alert('登录成功，正在转向后台主页！');

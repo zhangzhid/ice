@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{:get_config_value('site_name')} - 网络公关管理</title>
+		<link rel="stylesheet" href="CSS/bootstrap.css" />
+		<link rel="stylesheet" href="CSS/css.css" />
+		<script type="text/javascript" src="JS/jquery1.9.0.min.js"></script>
+		<script type="text/javascript" src="JS/bootstrap.min.js"></script>
+		<script type="text/javascript" src="JS/sdmenu.js"></script>
+		<script type="text/javascript" src="JS/laydate/laydate.js"></script>
+		<script type="text/javascript" src="JS/Validform_v5.3.2_min.js"></script>
+
+	</head>
+
+	<body>
+		<include file="./Uz/head.html" />
+		<div class="right" id="mainFrame">
+			<div class="right_cont">
+				<ul class="breadcrumb">当前位置： 后台管理
+				</ul>
+
+				<div class="title_right"><strong>网络公关查看</strong></div>
+				<div style="width:900px;">
+					<form id="searchForm" name="searchform" class="well form-search" action="" method="post"  onSubmit="check();">
+					<table class="table table-bordered">
+						<tr>
+							<td width="10%" align="right" bgcolor="#f1f1f1">名称：</td>
+							<td width="13%">
+								<input type="text" name="search[title]" value="{$search['title']}" placeholder="支持模糊查询" class="span1-1" />
+							</td>
+							<td align="right" bgcolor="#f1f1f1">类别：</td>
+							<td width="15%">
+								<select name="search[w1]" class=" span1-1">
+									<option value ='0' selected>全部</option>
+									<volist name="brand_list" id="vo">
+										<option value="{$vo.id}" <if condition="$vo[id] eq $search[w1]">selected</if>>{$vo.title}</option>
+									</volist>
+								</select>
+							</td>
+							<td class="text-center">
+								<input type="submit" value="查询" class="btn btn-info " style="width:80px;" onclick="checkaction(1);" />
+							</td>
+							</form>
+							<td class="text-center"><a href="{:U('add')}"  class="btn btn-success" style="width:80px;" />增加营销数据</td><!--
+							<td class="text-center"><a href="{:U('import')}" class="btn btn-primary" style="width:80px;" />Excel导入数据</td>-->
+						</tr>
+					</table>
+					<table class="table table-bordered">
+						<tr>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">ID</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">类别</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">图片</td>
+							<td align="center" nowrap="nowrap" bgcolor="#f1f1f1">操作</td>
+						</tr>
+						<if condition="$goods_list">
+							<foreach name="goods_list" item="vo">
+								<tr>
+									<td align="center">{$vo.id}</td>
+									<td align="center">{:get_title('brand',$vo[w1])}</td>
+									<td align="center"><img src="{$vo.z1}" width="520px" height="80px"/></td>
+									<td align="center">
+										<a title="编辑" class=" btn  btn-info" href="{:U("edit?id=$vo[id]")}">编辑</a>
+										<a title="删除" class=" btn  btn-danger " href="{:U("del?id=$vo[id]")}">删除</a>
+									</td>
+								</tr>
+							</foreach>
+							<else/>
+							<tr>
+								<td colspan="13" align="center">暂无数据</td>
+							</tr>
+						</if>
+					</table>
+							{$page}
+					</table>
+				</div>
+
+			</div>
+		</div>
+		</div>
+ <script>
+function checkaction(v){ 
+	if(v==0){ 
+	document.searchform.action="{:U('export')}"; 
+	}else{ 
+	document.searchform.action="{:U('index')}"; 
+	} 
+	searchform.submit(); 
+} 
+
+</script>  
+		<include file="./Uz/footer.html" />

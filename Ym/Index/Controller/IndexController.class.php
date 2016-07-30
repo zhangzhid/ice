@@ -53,7 +53,7 @@ class IndexController extends BaseController {
 		}
 		$sz = $db -> where($s3) -> order('id desc') -> limit($Page -> firstRow . ',' . $Page -> listRows) -> select();
 
-		//数字分页
+		//网络分页
 		$twl = $db -> where($s4) -> count();
 		if ($twl) {
 			$perNum = 8;
@@ -67,7 +67,7 @@ class IndexController extends BaseController {
 			$this -> assign('total', $twl);
 			$this -> assign('pwl', $show);
 		}
-		$sz = $db -> where($s3) -> order('id desc') -> limit($Page -> firstRow . ',' . $Page -> listRows) -> select();
+		$wl = $db -> where($s4) -> order('id desc') -> limit($Page -> firstRow . ',' . $Page -> listRows) -> select();
 
 
 
@@ -77,6 +77,7 @@ class IndexController extends BaseController {
 		$this -> assign('wb', $wb);
 		$this -> assign('wx', $wx);
 		$this -> assign('sz', $sz);
+		$this -> assign('wl', $wl);
 		$this -> assign('hd', $hd);
 		//$this -> assign('tg', $tg);
 		$this->display(':index');

@@ -195,17 +195,17 @@
 						<div class="zzctxt">
 							<a><?php echo ($vo["title"]); ?></a><br />
 							<em>账号：<?php echo ($vo["w2"]); ?></em><br />
-							<i>微信认证</i>
+							<?php if(($vo["type_v"] == 1)): ?><i>微信认证</i><?php endif; ?>
 						</div>
 					</div>
 					</dt>
 					<dd class="cw150"><?php echo ($vo["w3"]); ?>万</dd>
-					<dd class="cw170"><?php echo ($vo["w4"]); ?></dd>
-					<dd class="cw165"><?php echo ($vo["w5"]); ?></dd>
+					<dd class="cw170">￥<?php echo ($vo["w4"]); ?></dd>
+					<dd class="cw165">￥<?php echo ($vo["w5"]); ?></dd>
 					<dd class="cw135"><?php echo ($vo["z2"]); ?>+</dd>
 					<?php if(empty($ckid["uid"])): ?><dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
 						<?php else: ?>
-						<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd><?php endif; ?>
+						<dd><a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">预约</a>&nbsp;|&nbsp;<a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">查看</a></dd><?php endif; ?>
 				</dl><?php endforeach; endif; ?>
 				<?php else: endif; ?>
 				<?php if(empty($ckid["uid"])): ?><dl class="btrd">
@@ -226,7 +226,7 @@
 					<dd class="cw160">粉丝量</dd>
 					<dd class="cw160">直发报价</dd>
 					<dd class="cw160">转发报价</dd>
-					<dd class="cw160">曝光率</dd>
+					<dd class="cw160">周约次数</dd>
 					<dd class="cw100">操作</dd>
 				</dl>
 				<?php if($wb): if(is_array($wb)): foreach($wb as $key=>$vo): ?><dl class="clear-fix">
@@ -239,17 +239,17 @@
 								<div class="zzctxt">
 									<a><?php echo ($vo["title"]); ?></a><br />
 									<em>账号：<?php echo ($vo["w2"]); ?></em><br />
-									<i>微博认证</i>
+									<?php if(($vo["type_v"] == 1)): ?><i>微博认证</i><?php endif; ?>
 								</div>
 							</div>
 							</dt>
 							<dd class="cw150"><?php echo ($vo["w3"]); ?>万</dd>
 							<dd class="cw170"><?php echo ($vo["w4"]); ?></dd>
 							<dd class="cw165"><?php echo ($vo["w5"]); ?></dd>
-							<dd class="cw135"><?php echo ($vo["z2"]); ?>+</dd>
+							<dd class="cw135"><?php echo ($vo["z2"]); ?></dd>
 							<?php if(empty($ckid["uid"])): ?><dd><a href="/index/user/login/" title="请先登录">预约</a>&nbsp;|&nbsp;<a href="/index/user/login/" title="请先登录">查看</a></dd>
 								<?php else: ?>
-								<dd><a href="#">预约</a>&nbsp;|&nbsp;<a href="#">查看</a></dd><?php endif; ?>
+								<dd><a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">预约</a>&nbsp;|&nbsp;<a href="tencent://message/?uin=286028785&Site=冰蝉&Menu=yes">查看</a></dd><?php endif; ?>
 						</dl><?php endforeach; endif; ?>
 					<?php else: endif; ?>
 				<?php if(empty($ckid["uid"])): ?><dl class="btrd">
@@ -281,6 +281,9 @@
 					</dl><?php endif; ?>
 			</div>
 			<div class="wpcont">
+				<?php if(is_array($wl)): foreach($wl as $key=>$vo): ?><dl class="clear-fix">
+						<div class="suzimg"><img src="<?php echo ($vo["z1"]); ?>" width="960" height="80" /></div>
+					</dl><?php endforeach; endif; ?>
 				<?php if(empty($ckid["uid"])): ?><dl class="btrd">
 						<div class="pz">
 							<a class="wz" href="javascript:;" id="t3">>>点击查看更多数据</a>

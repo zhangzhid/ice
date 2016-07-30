@@ -9,7 +9,7 @@ class SbseController extends Controller {
 			exit ;
 		}
 		$Brand = M('Brand');
-		$brand_list = $Brand ->order('id desc') -> limit(10) -> select();
+		$brand_list = $Brand ->order('id') -> limit(20) -> select();
 		$db = M('news');
     	$list = $db->order('id desc')->limit(10)->select();
 		$gd = M('ad');

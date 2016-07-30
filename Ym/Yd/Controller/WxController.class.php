@@ -7,7 +7,7 @@ class WxController extends AuthController {
 	
 	public function _initialize() {
 		$Brand = M('Brand');
-		$brand_list = $Brand -> where(array('status' => 1)) -> order('id desc') -> limit(10) -> select();
+		$brand_list = $Brand -> where(array('status' => 1)) -> order('id desc') -> limit(30) -> select();
 		$this -> assign('brand_list', $brand_list);
 		
 	}
@@ -110,6 +110,7 @@ class WxController extends AuthController {
 		$data['z1'] = I('z1', '');
 		$data['z2'] = I('z2', '');
 		$data['w7'] = I('w7', '');
+		$data['type_v'] = I('type_v', '0');
 
 		/*//新增上传头像
 		$upload = new \Think\Upload();// 实例化上传类
@@ -234,6 +235,7 @@ class WxController extends AuthController {
 				$date['w4'] = $v['F'];
 				$date['w5'] = $v['G'];
 				$date['z2'] = $v['H'];
+				$date['type_v'] = $v['I'];
 				$date['w7'] = 2;
 				$date['add_time'] = $add_time;
 				$result = M('data') -> add($date);
@@ -292,12 +294,13 @@ class WxController extends AuthController {
 			array('w3','粉丝量'),
 			array('w4','头条报价'),
 			array('w5','非头条报价'),
-			array('z2','阅读数')
+			array('z2','阅读数'),
+			array('type_v','加V标识')
 
 		);
 		$xlsModel = M('data');
 
-		$xlsData  = $xlsModel->where(array('w7' => 2))->Field('id,z1,w1,title,w2,w3,w4,w5,z2')->select();
+		$xlsData  = $xlsModel->where(array('w7' => 2))->Field('id,z1,w1,title,w2,w3,w4,w5,z2,type_v')->select();
 		foreach ($xlsData as $k => $v)
 		{
 			if ($xlsData[$k]['w1']== 1){

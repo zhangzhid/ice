@@ -3,11 +3,11 @@
 namespace Yd\Controller;
 use Think\Controller;
 
-class WbController extends AuthController {
+class WlController extends AuthController {
 	
 	public function _initialize() {
 		$Brand = M('Brand');
-		$brand_list = $Brand -> where(array('status' => 1)) -> order('id desc') -> limit(30) -> select();
+		$brand_list = $Brand -> where(array('status' => 1)) -> order('id desc') -> limit(10) -> select();
 		$this -> assign('brand_list', $brand_list);
 		
 	}
@@ -18,7 +18,7 @@ class WbController extends AuthController {
 		//搜索条件
 		$search = I('search', array());
 		
-		$filter['w7'] = 1;
+		$filter['w7'] = 4;
 
 		$title = $search['title'];
 
@@ -66,12 +66,12 @@ class WbController extends AuthController {
 		
 		$this -> assign('search', $search);
 		$this -> assign('goods_list', $goods_list);
-		$this -> display(':wb');
+		$this -> display(':wl');
 	}
 
 	//添加
 	public function add() {
-		$this -> display(':wbadd');
+		$this -> display(':wladd');
 	}
 
 	//检查
@@ -90,7 +90,7 @@ class WbController extends AuthController {
 		$id = I('id');
 		$goods_info = M('data') -> find($id);
 		$this -> assign('goods_info', $goods_info);
-		$this -> display(':wbadd');
+		$this -> display(':wladd');
 	}
 
 	//保存数据
@@ -98,19 +98,10 @@ class WbController extends AuthController {
 		$id = I('id');
 		$Goods = M('data');
 		$info = $Goods -> find($id);
-
 		$data['w1'] = I('w1', '');
-		$data['title'] = I('title', '');
-		$data['w2'] = I('w2', '');
-		$data['w3'] = I('w3', '');
-		$data['w4'] = I('w4', '');
-		$data['w5'] = I('w5', '');
-		$data['z1'] = I('z1', '');
-		$data['z2'] = I('z2', '');
 		$data['w7'] = I('w7', '');
-		$data['type_v'] = I('type_v', '0');
-
-		/*//新增上传头像
+		$data['title'] = I('title', '');
+		//新增上传头像
 		$upload = new \Think\Upload();// 实例化上传类
 		$upload->maxSize   =     3145728 ;// 设置附件上传大小
 		$upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类
@@ -119,7 +110,7 @@ class WbController extends AuthController {
 		if($zx){
 			$tz = __ROOT__.'/Uploads'.$zx['savepath'].$zx['savename'];
 			$data['z1']    = $tz;
-		}*/
+		}
 		if ($info) {
 			//更新操作
 			$result = $Goods -> where(array('id' => $id)) -> save($data);
@@ -174,7 +165,7 @@ class WbController extends AuthController {
 
 	//导入数据页面
 	public function import() {
-		$this -> display(':wbim');
+		$this -> display(':wlim');
 	}
 
 	//导入数据方法
@@ -218,8 +209,7 @@ class WbController extends AuthController {
 		$add_time = time();
 		foreach ($data as $k => $v) {
 			if ($k > 1) {
-				$date['z1'] = $v['A'];         V
-				$brand_title = $v['B'];
+				$brand_title = $v['A'];
 				$brand_id = M('Brand') -> where(array('title' => $brand_title)) -> getField('id');
 				if ($brand_id) {
 					$date['w1'] = $brand_id;
@@ -227,13 +217,12 @@ class WbController extends AuthController {
 					$new_brand_id = M('Brand') -> add(array('title' => $brand_title, 'add_time' => $add_time));
 					$date['w1'] = $new_brand_id;
 				}
-				$date['title'] = $v['C'];
-				$date['w2'] = $v['D'];
-				$date['w3'] = $v['E'];
-				$date['w4'] = $v['F'];
-				$date['w5'] = $v['G'];
-				$date['z2'] = $v['H'];
-				$date['type_v'] = $v['I'];
+				$date['title'] = $v['B'];
+				$date['w2'] = $v['C'];
+				$date['w3'] = $v['D'];
+				$date['w4'] = $v['E'];
+				$date['w5'] = $v['F'];
+				$date['z2'] = $v['G'];
 				$date['w7'] = 1;
 				$date['add_time'] = $add_time;
 				$result = M('data') -> add($date);
@@ -245,93 +234,5 @@ class WbController extends AuthController {
 			$this -> error('导入失败');
 		}
 	}
-
-
-
-	public function exportExcel($expTitle,$expCellName,$expTableData){
-		$xlsTitle = iconv('utf-8', 'gb2312', $expTitle);//文件名称
-		$fileName = $_SESSION['account'].date('YmdHis');//or $xlsTitle 文件名称可根据自己情况设定
-		$cellNum = count($expCellName);
-		$dataNum = count($expTableData);
-
-		import("Org.Util.PHPExcel");
-
-		$objPHPExcel = new \PHPExcel();
-		$cellName = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ');
-
-		$objPHPExcel->getActiveSheet(0)->mergeCells('A1:'.$cellName[$cellNum-1].'1');//合并单元格
-		// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  Export time:'.date('Y-m-d H:i:s'));
-		for($i=0;$i<$cellNum;$i++){
-			$objPHPExcel->setActiveSheetIndex(0)->setCellValue($cellName[$i].'2', $expCellName[$i][1]);
-		}
-		// Miscellaneous glyphs, UTF-8
-		for($i=0;$i<$dataNum;$i++){
-			for($j=0;$j<$cellNum;$j++){
-				$objPHPExcel->getActiveSheet(0)->setCellValue($cellName[$j].($i+3), $expTableData[$i][$expCellName[$j][0]]);
-			}
-		}
-
-		header('pragma:public');
-		header('Content-type:application/vnd.ms-excel;charset=utf-8;name="'.$xlsTitle.'.xls"');
-		header("Content-Disposition:attachment;filename=$fileName.xls");//attachment新窗口打印inline本窗口打印
-		$objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-		$objWriter->save('php://output');
-		exit;
-	}
-
-	/**
-	 *
-	 * 导出Excel
-	 */
-	function expUser(){//导出Excel
-		$xlsName  = "User";
-		$xlsCell  = array(
-			array('id','序列'),
-			array('z1','头像'),
-			array('w1','类别'),
-			array('title','账号'),
-			array('w2','名称'),
-			array('w3','粉丝量'),
-			array('w4','软广报价'),
-			array('w5','硬广报价'),
-			array('z2','曝光率'),
-			array('type_v','加V标识')
-
-		);
-		$xlsModel = M('data');
-
-		$xlsData  = $xlsModel->where(array('w7' => 1))->Field('id,z1,w1,title,w2,w3,w4,w5,z2,type_v')->select();
-		foreach ($xlsData as $k => $v)
-		{
-			if ($xlsData[$k]['w1']== 1){
-				$xlsData[$k]['w1']='新闻|资讯';
-			}
-			if ($xlsData[$k]['w1']== 2){
-				$xlsData[$k]['w1']='IT|科技';
-			}
-			if ($xlsData[$k]['w1']== 3){
-				$xlsData[$k]['w1']='金融|财经';
-			}
-			if ($xlsData[$k]['w1']== 4){
-				$xlsData[$k]['w1']='电商|创业';
-			}
-			if ($xlsData[$k]['w1']== 5){
-				$xlsData[$k]['w1']='广告|营销';
-			}
-			if ($xlsData[$k]['w1']== 6){
-				$xlsData[$k]['w1']='搞笑|娱乐';
-			}
-			if ($xlsData[$k]['w1']== 7){
-				$xlsData[$k]['w1']='女性|时尚';
-			}
-			if ($xlsData[$k]['w1']== 8){
-				$xlsData[$k]['w1']='管理|职场';
-			}
-
-		}
-		$this->exportExcel($xlsName,$xlsCell,$xlsData);
-
-	}
-
 
 }

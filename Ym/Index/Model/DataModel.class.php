@@ -12,6 +12,8 @@ class DataModel extends Model {
 				$w7 = I('get.t_id', -1);
 		if($w7 != -1)
 			$where['w7'] = array('eq', $w7);
+		else
+		    $where['w7'] = array('in', array('1', '2'));
 		// 类别搜索 
 		$w1 = I('get.type_id', -1);
 		if($w1 != -1)
