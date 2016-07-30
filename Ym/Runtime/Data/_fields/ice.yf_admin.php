@@ -1,0 +1,1 @@
+a:6:{i:0;s:3:"aid";i:1;s:10:"admin_name";i:2;s:14:"admin_password";i:3;s:5:"dtime";s:3:"_pk";s:3:"aid";s:5:"_type";a:4:{s:3:"aid";s:8:"int(255)";s:10:"admin_name";s:12:"varchar(255)";s:14:"admin_password";s:12:"varchar(255)";s:5:"dtime";s:7:"int(10)";}}
